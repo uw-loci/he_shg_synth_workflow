@@ -1,7 +1,7 @@
 # Second-harmonic Generation Collagen Image Synthesis from Hematoxylin and Eosin Image Using Image-to-image Translation Neural Network
 Program for a complete H&amp;E-SHG synthesizing workflow
 
-|Input H&amp;E| output |
+|Input H&amp;E| Synthesized Collagen Image |
 |----------|--------|
 |<img src="https://github.com/uw-loci/he_shg_synth_workflow/blob/master/thumbnails/he.jpg" width="320">|<img src="https://github.com/uw-loci/he_shg_synth_workflow/blob/master/thumbnails/shg.jpg" width="320">|
 
@@ -60,5 +60,8 @@ Test customized images:
 
 1. Create a folder named "input_test_[NAME]" containing input images.
 2. Execute main.py with option "--input-folder=[NAME]".
+```
+python main.py --input-folder=[NAME]
+```
 3. Output are saved in "outptu_test_[NAME]" folder.
   
