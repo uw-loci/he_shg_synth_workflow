@@ -63,5 +63,5 @@ Test customized images:
 ```
 python main.py --input-folder=[NAME]
 ```
-3. Output are saved in "outptu_test_[NAME]" folder.
+3. Output images are saved in "output_test_[NAME]" folder.
   
