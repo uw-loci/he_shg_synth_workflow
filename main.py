@@ -68,8 +68,6 @@ def main():
     parser.add_argument('--which-gpu', type=int, default=0, help='index of gpu')
     parser.add_argument('--load-multiple-gpu-weights', type=int, default=1, help='1: multiple gpu weights, 0: single gpu weghts')
     parser.add_argument('--input-folder', type=str, default='default', help='input_test + _FOLDERNAME')
-    parser.add_argument('--batch-size', type=int, default=1, help='batch size')
-    parser.add_argument('--num-workers', type=int, default=2, help='threads to load data')
     parser.add_argument('--intensity', type=tuple, default=(20, 180), help='output intensity rescale')
     parser.add_argument('--pilot', type=int, default=0, help='1: only process the first image, 0: process all images')
     
@@ -152,7 +150,7 @@ def demo(args):
                     print('{}_{}.tiff; ; ({}, {})'.format(j, i, i*step_size, j*step_size), file=text_file)
         csv_file_path = generate_csv(INPUT_PATCH_DIR, os.getcwd())
         dataset = SynthDataset(csv_file=csv_file_path)
-        dataloader = DataLoader(dataset, batch_size=args.batch_size, shuffle=False, num_workers=args.num_workers)
+        dataloader = DataLoader(dataset, batch_size=1, shuffle=False, num_workers=1)
         with open(csv_file_path) as f:
             reader = csv.reader(f)
             name_list = list(reader)
