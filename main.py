@@ -2,7 +2,6 @@ from skimage import io, img_as_ubyte, morphology, img_as_bool, img_as_float, exp
 from skimage.util.shape import view_as_windows
 from skimage.util import crop, pad
 from skimage.transform import resize, rescale
-import cv2
 from PIL import Image
 import imagej
 
@@ -37,43 +36,6 @@ def generate_csv(img_dir, csv_dir):
             filewriter.writerow([img])
     return csv_file_path
 
-class SegDataset(Dataset):
-
-    def __init__(self, csv_file, transform=None):
-     
-        self.files_list = pd.read_csv(csv_file, header=None)
-        self.transform = transform
-
-    def __len__(self):
-        return len(self.files_list)
-
-    def __getitem__(self, idx):
-        img = os.path.join(self.files_list.iloc[idx, 0])
-
-        img = cv2.imread(img)
-        
-        img = numpy_to_pil(img, True)
-        img = pil_to_numpy(img, True)
-        
-        img = torch.from_numpy(np.array([img.transpose((2, 0, 1)).astype('float32')/255.]))
-
-        sample = {'image':img}
-
-        if self.transform:
-            sample = self.transform(sample)
-        return sample
-    
-def numpy_to_pil(img, is_rgb=False):
-    if is_rgb:
-        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-    return Image.fromarray(img)
-
-def pil_to_numpy(img, is_rgb=False):
-    img = np.array(img)
-    if is_rgb:
-        img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
-    return img  
-
 class SynthDataset(Dataset):
 
     def __init__(self, csv_file, transform=None):
@@ -98,33 +60,6 @@ class SynthDataset(Dataset):
         if self.transform:
             sample = self.transform(sample)
         return sample
-    
-class CorrectDataset(Dataset):
-
-    def __init__(self, csv_file, transform=None):
-     
-        self.files_list = pd.read_csv(csv_file, header=None)
-        self.transform = transform
-
-    def __len__(self):
-        return len(self.files_list)
-
-    def __getitem__(self, idx):
-        img = os.path.join(self.files_list.iloc[idx, 0])
-
-        img = io.imread(img)
-        img = img_as_float(img)
-
-        img = color.rgb2hsv(img)
-        img = img.transpose((2, 0, 1))
-        
-        img = torch.from_numpy(img)
-
-        sample = {'image':img}
-
-        if self.transform:
-            sample = self.transform(sample)
-        return sample
 
 def main():
     parser = argparse.ArgumentParser()
@@ -134,6 +69,7 @@ def main():
     parser.add_argument('--load-multiple-gpu-weights', type=int, default=1, help='1: multiple gpu weights, 0: single gpu weghts')
     parser.add_argument('--input-folder', type=str, default='default', help='input_test + _FOLDERNAME')
     parser.add_argument('--batch_size', type=int, default=1, help='batch size')
+    parser.add_argument('--num_workers', type=int, default=2, help='threads to load data')
     parser.add_argument('--intensity', type=tuple, default=(20, 180), help='output intensity rescale')
     parser.add_argument('--pilot', type=int, default=0, help='1: only process the first image, 0: process all images')
     
@@ -216,7 +152,7 @@ def demo(args):
                     print('{}_{}.tiff; ; ({}, {})'.format(j, i, i*step_size, j*step_size), file=text_file)
         csv_file_path = generate_csv(INPUT_PATCH_DIR, os.getcwd())
         dataset = SynthDataset(csv_file=csv_file_path)
-        dataloader = DataLoader(dataset, batch_size=args.batch_size, shuffle=False, num_workers=1)
+        dataloader = DataLoader(dataset, batch_size=args.batch_size, shuffle=False, num_workers=args.num_workers)
         with open(csv_file_path) as f:
             reader = csv.reader(f)
             name_list = list(reader)
