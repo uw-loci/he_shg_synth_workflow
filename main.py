@@ -68,8 +68,8 @@ def main():
     parser.add_argument('--which-gpu', type=int, default=0, help='index of gpu')
     parser.add_argument('--load-multiple-gpu-weights', type=int, default=1, help='1: multiple gpu weights, 0: single gpu weghts')
     parser.add_argument('--input-folder', type=str, default='default', help='input_test + _FOLDERNAME')
-    parser.add_argument('--batch_size', type=int, default=1, help='batch size')
-    parser.add_argument('--num_workers', type=int, default=2, help='threads to load data')
+    parser.add_argument('--batch-size', type=int, default=1, help='batch size')
+    parser.add_argument('--num-workers', type=int, default=2, help='threads to load data')
     parser.add_argument('--intensity', type=tuple, default=(20, 180), help='output intensity rescale')
     parser.add_argument('--pilot', type=int, default=0, help='1: only process the first image, 0: process all images')
     
