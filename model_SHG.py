@@ -2,7 +2,6 @@ import torch
 import torch.nn as nn
 import torch.nn.init as init
 import torch.nn.functional as F
-from torchvision.models import vgg19
 import math
 
 class SkipBlock(nn.Module):
