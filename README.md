@@ -7,6 +7,11 @@ Program for a complete H&amp;E-SHG synthesizing workflow
 
 ## Required packages
 Install required packages in a virtual environment, commands for anaconda/miniconda are listed
+* python==3.6.x
+```
+  conda create -n [NAME_ENV] python=3.6.0
+  conda activate [NAME_ENV]
+```
 * matplotlib==3.1.2 
 ```
   conda install -c conda-forge matplotlib=3.1.2
@@ -23,6 +28,10 @@ Install required packages in a virtual environment, commands for anaconda/minico
 ```
   conda install -c anaconda pillow=5.3.0
 ```  
+* pyimagej==0.4.0
+```
+conda install -c conda-forge pyimagej
+```
 * scikit-image==0.16.2
 ```
   conda install -c anaconda scikit-image=0.16.2
