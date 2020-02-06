@@ -44,6 +44,8 @@ def main():
     unzip_data(args.path, 'input_test_default')
     os.remove(args.path)
     print('downloading model weights')
+    if os.path.exists('weights'): shutil.rmtree('weights') 
+    os.mkdir('weights')
     download_url(args.url_weights, args.path_weights)
     print('downloading fiji')
     download_url('https://uwmadison.box.com/shared/static/mysrf3cvyhlk4orvhuwi53t5pm0b53k8.zip',
