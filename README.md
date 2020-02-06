@@ -9,7 +9,7 @@ Program for a complete H&amp;E-SHG synthesizing workflow
 Install required packages in a virtual environment, commands for anaconda/miniconda are listed
 * python==3.6.x
 ```
-  conda create -n [NAME_ENV] python=3.6.0
+  conda create --name [NAME_ENV] python=3.6
   conda activate [NAME_ENV]
 ```
 * matplotlib==3.1.2 
