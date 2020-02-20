@@ -6,7 +6,7 @@ Program for a complete H&amp;E-SHG synthesizing workflow
 |<img src="https://github.com/uw-loci/he_shg_synth_workflow/blob/master/thumbnails/he.jpg" width="320">|<img src="https://github.com/uw-loci/he_shg_synth_workflow/blob/master/thumbnails/shg.jpg" width="320">|
 
 ## Required packages
-Install required packages in a virtual environment, commands for anaconda/miniconda are listed
+Install required packages in a virtual environment, commands for anaconda/miniconda(https://www.anaconda.com/distribution/) are listed
 * python==3.6.x
 ```
   conda create --name [NAME_ENV] python=3.6
