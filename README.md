@@ -1,7 +1,6 @@
 # Second-harmonic Generation Collagen Image Synthesis from Hematoxylin and Eosin Image Using Image-to-image Translation Neural Network
 Program for a complete H&amp;E-SHG synthesizing workflow  
-Paper accepted at https://www.nature.com/articles/s42003-020-01151-5
-
+Paper accepted at https://www.nature.com/articles/s42003-020-01151-5  
 Intensity-based registration algorithm repository: https://github.com/uw-loci/shg_he_registration
 
 |Input H&amp;E| Synthesized Collagen Image (SHG) |
