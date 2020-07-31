@@ -1,14 +1,14 @@
 # Second-harmonic Generation Collagen Image Synthesis from Hematoxylin and Eosin Image Using Image-to-image Translation Neural Network
 Program for a complete H&amp;E-SHG synthesizing workflow  
-Paper accepted at https://www.nature.com/commsbio/  
-Will soon be updated  
+Paper accepted at https://www.nature.com/articles/s42003-020-01151-5
+Intensity-based registration algorithm repository: https://github.com/uw-loci/shg_he_registration
 
-|Input H&amp;E| Synthesized Collagen Image |
+|Input H&amp;E| Synthesized Collagen Image (SHG) |
 |----------|--------|
 |<img src="https://github.com/uw-loci/he_shg_synth_workflow/blob/master/thumbnails/he.jpg" width="320">|<img src="https://github.com/uw-loci/he_shg_synth_workflow/blob/master/thumbnails/shg.jpg" width="320">|
 
 ## Required packages
-Install required packages in a virtual environment, commands for anaconda/miniconda(https://www.anaconda.com/distribution/) are listed
+Install required packages in a virtual environment, commands for anaconda/miniconda (https://www.anaconda.com/distribution/) are listed
 * python==3.6.x
 ```
   conda create --name [NAME_ENV] python=3.6
@@ -69,10 +69,28 @@ Output images are saved in "output_test_default" folder by default.
 ```
 Test customized images:
 
-1. Create a folder named "input_test_[NAME]" containing input images.
+1. Create a folder named "input_test_[NAME]" containing input images (images from a 40x Aperio CS2 scanner are recommended).
 2. Execute main.py with option "--input-folder=[NAME]".
 ```
 python main.py --input-folder=[NAME]
 ```
 3. Output images are saved in "output_test_[NAME]" folder.
   
+## Citations
+```
+@article{keikhosravi_non-disruptive_2020,
+	title = {Non-disruptive collagen characterization in clinical histopathology using cross-modality image synthesis},
+	volume = {3},
+	copyright = {2020 The Author(s)},
+	issn = {2399-3642},
+  url = {https://www.nature.com/articles/s42003-020-01151-5},
+	doi = {10.1038/s42003-020-01151-5},
+	number = {1},
+	journal = {Communications Biology},
+	author = {Keikhosravi, Adib and Li, Bin and Liu, Yuming and Conklin, Matthew W. and Loeffler, Agnes G. and Eliceiri, Kevin W.},
+	month = jul,
+	year = {2020},
+	note = {Publisher: Nature Publishing Group},
+	pages = {1--12}
+}
+```
