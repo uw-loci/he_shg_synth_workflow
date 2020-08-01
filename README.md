@@ -1,4 +1,5 @@
-# Second-harmonic Generation Collagen Image Synthesis from Hematoxylin and Eosin Image Using Image-to-image Translation Neural Network
+# Non-disruptive collagen characterization in clinical histopathology using cross-modality image synthesis
+Second-harmonic Generation Collagen Image Synthesis from Hematoxylin and Eosin Image Using Image-to-image Translation Neural Network  
 Program for a complete H&amp;E-SHG synthesizing workflow  
 Paper accepted at https://www.nature.com/articles/s42003-020-01151-5  
 Intensity-based registration algorithm repository: https://github.com/uw-loci/shg_he_registration
