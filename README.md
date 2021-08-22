@@ -9,44 +9,13 @@ Intensity-based registration algorithm repository: https://github.com/uw-loci/sh
 |<img src="https://github.com/uw-loci/he_shg_synth_workflow/blob/master/thumbnails/he.jpg" width="320">|<img src="https://github.com/uw-loci/he_shg_synth_workflow/blob/master/thumbnails/shg.jpg" width="320">|
 
 ## Required packages
-Install required packages in a virtual environment, commands for anaconda/miniconda (https://www.anaconda.com/distribution/) are listed
-* python==3.6.x
+Install [anaconda/miniconda](https://docs.conda.io/en/latest/miniconda.html)  
+Required packages
 ```
-  conda create --name [NAME_ENV] python=3.6
-  conda activate [NAME_ENV]
+  $ conda env create --name syn --file env.yml
+  $ conda activate syn
 ```
-* matplotlib==3.1.2 
-```
-  conda install -c conda-forge matplotlib=3.1.2
-```  
-* numpy==1.17.4
-```
-  conda install -c anaconda numpy=1.17.4
-```  
-* pandas==0.25.3
-```
-  conda install -c anaconda pandas=0.25.3
-``` 
-* Pillow==5.3.0
-```
-  conda install -c anaconda pillow=5.3.0
-```  
-* pyimagej==0.4.0
-```
-conda install -c conda-forge pyimagej
-```
-* scikit-image==0.16.2
-```
-  conda install -c anaconda scikit-image=0.16.2
-```  
-* tqdm==4.42.0
-```
-  conda install -c conda-forge tqdm=4.42.0
-```  
-* pytorch>=1.3.1
-```
-  conda install pytorch torchvision cudatoolkit=10.1 -c pytorch
-```  
+
 ## Download example testing data, trained model weights, FIJI
 Execute download.py
 ```  

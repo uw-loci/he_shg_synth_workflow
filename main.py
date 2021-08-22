@@ -69,7 +69,7 @@ def main():
     parser.add_argument('--load-multiple-gpu-weights', type=int, default=1, help='1: multiple gpu weights, 0: single gpu weghts')
     parser.add_argument('--input-folder', type=str, default='default', help='input_test + _FOLDERNAME')
     parser.add_argument('--intensity', type=tuple, default=(20, 180), help='output intensity rescale')
-    parser.add_argument('--pilot', type=int, default=0, help='1: only process the first image, 0: process all images')
+    parser.add_argument('--pilot', type=int, default=1, help='1: only process the first image, 0: process all images')
     
     args = parser.parse_args()
     
@@ -104,7 +104,7 @@ def demo(args):
     model.to(device)
     
     print('loading ImageJ, please wait')
-    ij = imagej.init('fiji/fiji/Fiji.app/')
+    ij = imagej.init('fiji/Fiji.app/')
     
     # use for SHG
     TASK = args.input_folder
@@ -165,6 +165,7 @@ def demo(args):
                         io.imsave(OUTPUT_PATCH_DIR+img_name, result_patch)
         
         print('stitching, please wait...')                
+        os.makedirs(CHANNEL_DIR, exist_ok=True)
         params = {'type': 'Positions from file', 'order': 'Defined by TileConfiguration', 
                 'directory':OUTPUT_PATCH_DIR, 'ayout_file': 'TileConfiguration.txt', 
                 'fusion_method': 'Linear Blending', 'regression_threshold': '0.30', 
@@ -172,7 +173,7 @@ def demo(args):
                 'compute_overlap':False, 'computation_parameters': 'Save computation time (but use more RAM)', 
                 'image_output': 'Write to disk', 'output_directory': CHANNEL_DIR}
         plugin = "Grid/Collection stitching"
-        ij.py.run_plugin(plugin, params)     
+        ij.py.run_plugin(plugin, params)    
 
         output_name = os.path.join(OUTPUT_DIR, fn)
         listOfChannels = [f for f in os.listdir(CHANNEL_DIR)]
@@ -180,6 +181,7 @@ def demo(args):
         c1 = c1[:img.shape[0], :img.shape[1]]
         c1 = img_as_ubyte(c1)
         c1 = exposure.rescale_intensity(c1, in_range=args.intensity, out_range=(0, 255))
+        c1 = exposure.rescale_intensity(c1, in_range=(0, 255), out_range=(0, 1))
         print(str(k+1)+"/" + str(len(files)) + " output saved as: " + output_name)
         io.imsave(output_name, img_as_ubyte(c1))
         if args.pilot:
