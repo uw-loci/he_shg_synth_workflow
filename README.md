@@ -25,7 +25,7 @@ python download.py
 ## Run demo
 Execute main.py
 ```  
-python main.py
+python main.py --pilot=0
 ```
 
 Output images are saved in "output_test_default" folder by default.
