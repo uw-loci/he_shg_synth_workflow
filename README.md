@@ -30,7 +30,7 @@ These two commands will change the current directory to:
 Then run the following two commands to create and activate the environment "syn"
   conda env create --name syn --file env.yml
   conda activate syn
-leading to : (syn) E:\he_shg_synth_workflow
+leading to : (syn) E:\he_shg_synth_workflow>
 ```
 
 ## Download example testing data, trained model weights, FIJI
