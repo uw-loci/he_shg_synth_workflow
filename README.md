@@ -21,12 +21,13 @@ then launch "Anaconda prompt", yielding eg in windows the base environment of co
 
 Required packages
 ```
-Make the source code directory(eg E:\he_shg_synth_workflow) as the current working folder, using the following command (in Windows)
+Make the source code directory(eg E:\he_shg_synth_workflow) as the current working folder, using the following commands (in Windows)
 cd E:\he_shg_synth_workflow
 E:
+
 These two commands will change the current directory to:
 (base) E:\he_shg_synth_workflow
-Then run the following two commands to create and lunch the environment "syn"
+Then run the following two commands to create and activate the environment "syn"
   conda env create --name syn --file env.yml
   conda activate syn
 leading to : (syn) E:\he_shg_synth_workflow
