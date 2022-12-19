@@ -8,12 +8,26 @@ Intensity-based registration algorithm repository: https://github.com/uw-loci/sh
 |----------|--------|
 |<img src="https://github.com/uw-loci/he_shg_synth_workflow/blob/master/thumbnails/he.jpg" width="320">|<img src="https://github.com/uw-loci/he_shg_synth_workflow/blob/master/thumbnails/shg.jpg" width="320">|
 
+## download the source code and upzip it to a local drive,eg in windows
+```
+E:\he_shg_synth_workflow
+```
+
 ## Required packages
 Install [anaconda/miniconda](https://docs.conda.io/en/latest/miniconda.html)  
+then launch "Anaconda prompt", yielding eg in windows the base environment of conda as below:
+(base) C:\Users\AccountName>
 Required packages
 ```
-  $ conda env create --name syn --file env.yml
-  $ conda activate syn
+Make the source code directory(eg E:\he_shg_synth_workflow) as the current working folder, using the following command (in Windows)
+cd E:\he_shg_synth_workflow
+E:
+These two commands will change the current directory to:
+(base) E:\he_shg_synth_workflow
+Then run the following two commands to create and lunch the environment "syn"
+  conda env create --name syn --file env.yml
+  conda activate syn
+leading to : (syn) E:\he_shg_synth_workflow
 ```
 
 ## Download example testing data, trained model weights, FIJI
