@@ -16,7 +16,9 @@ E:\he_shg_synth_workflow
 ## Required packages
 Install [anaconda/miniconda](https://docs.conda.io/en/latest/miniconda.html)  
 then launch "Anaconda prompt", yielding eg in windows the base environment of conda as below:
+
 (base) C:\Users\AccountName>
+
 Required packages
 ```
 Make the source code directory(eg E:\he_shg_synth_workflow) as the current working folder, using the following command (in Windows)
