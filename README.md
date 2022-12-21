@@ -8,7 +8,7 @@ Intensity-based registration algorithm repository: https://github.com/uw-loci/sh
 |----------|--------|
 |<img src="https://github.com/uw-loci/he_shg_synth_workflow/blob/master/thumbnails/he.jpg" width="320">|<img src="https://github.com/uw-loci/he_shg_synth_workflow/blob/master/thumbnails/shg.jpg" width="320">|
 
-## download the source code and upzip it to a local drive,eg in windows
+## download the [source code](https://github.com/uw-loci/he_shg_synth_workflow/archive/refs/heads/master.zip) and upzip it to a local drive,eg in windows
 ```
 E:\he_shg_synth_workflow
 ```
