@@ -14,7 +14,7 @@ E:\he_shg_synth_workflow
 ```
 
 ## Required packages
-Install [anaconda/miniconda](https://docs.conda.io/en/latest/miniconda.html)  
+Install [miniconda](https://docs.conda.io/en/latest/miniconda.html)  
 then launch "Anaconda prompt", yielding eg in windows the base environment of conda as below:
 
 (base) C:\Users\AccountName>
@@ -24,13 +24,25 @@ Required packages
 Make the source code directory(eg E:\he_shg_synth_workflow) as the current working folder, using the following commands (in Windows)
 cd E:\he_shg_synth_workflow
 E:
-
+Installation option 1: 
 These two commands will change the current directory to:
 (base) E:\he_shg_synth_workflow>
-Then run the following two commands to create and activate the environment "syn"
-  conda env create --name syn --file env.yml
-  conda activate syn
-leading to : (syn) E:\he_shg_synth_workflow>
+then install [Mambaforge windows 64] (https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Windows-x86_64.exe)
+follow the guide of the repo to install the packages:
+conda env create --name synMF --file env.yml
+conda activate synMF
+pip3 install jpype1==1.3.0 (additional step)
+pip3 install PyQt5 (additional step)
+conda install -c jasonb857 importlib-metadata (additional step, version 3.10.1)
+python main.py --pilot=0
+
+Installation option 2:
+first to install a PyImageJ environment with all packages satisfied
+conda install mamba -n base -c conda-forge
+mamba create -n pyimagej -c conda-forge pyimagej openjdk=8
+conda activate pyimagej
+Then, inside this environment, install dependencies for [PyTorch] (https://pytorch.org/) and a bunch of other image processing packages such as sciki-image.
+
 ```
 
 ## Download example testing data, trained model weights, FIJI
