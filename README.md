@@ -27,7 +27,7 @@ E:
 Installation option 1: 
 These two commands will change the current directory to:
 (base) E:\he_shg_synth_workflow>
-then install [Mambaforge windows 64] (https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Windows-x86_64.exe)
+then install [Mambaforge windows 64](https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Windows-x86_64.exe)
 follow the guide of the repo to install the packages:
 conda env create --name synMF --file env.yml
 conda activate synMF
@@ -41,7 +41,7 @@ first to install a PyImageJ environment with all packages satisfied
 conda install mamba -n base -c conda-forge
 mamba create -n pyimagej -c conda-forge pyimagej openjdk=8
 conda activate pyimagej
-Then, inside this environment, install dependencies for [PyTorch] (https://pytorch.org/) and a bunch of other image processing packages such as sciki-image.
+Then, inside this environment, install dependencies for [PyTorch](https://pytorch.org/) and a bunch of other image processing packages such as sciki-image.
 
 ```
 
