@@ -1,10 +1,9 @@
 from skimage import io, img_as_ubyte, morphology, img_as_bool, img_as_float, exposure, color
 from skimage.util.shape import view_as_windows
-from skimage.util import crop, pad
+from skimage.util import crop
 from skimage.transform import resize, rescale
 from PIL import Image
 import imagej
-
 
 import numpy as np
 import os, glob, sys
@@ -23,6 +22,28 @@ import torch.functional as F
 import torch
 
 import model_SHG as md
+
+def convert_to_jpeg(img_name):
+    yourpath = os.getcwd() + '/output_patch_temp/'
+    outpath = os.getcwd() + '/output_patch_jpg/' + img_name
+    os.makedirs(f'output_patch_jpg/{img_name}/')
+    print("Generating jpeg for %s" % img_name)
+
+    for root, dirs, files in os.walk(yourpath, topdown=False):
+        for name in files:
+            #print(os.path.join(outpath, name))
+            if os.path.splitext(os.path.join(root, name))[1].lower() == ".tiff":
+                if os.path.isfile(os.path.splitext(os.path.join(outpath, name))[0] + ".jpg"):
+                    print(f"A jpeg file already exists for {name}")
+                # If a jpeg is *NOT* present, create one from the tiff.
+                else:
+                    outfile = os.path.splitext(os.path.join(outpath, name))[0] + ".jpg"
+                    try:
+                        im = Image.open(os.path.join(root, name))
+                        im.thumbnail(im.size)
+                        im.save(outfile, "JPEG", quality=100)
+                    except(Exception, e):
+                        print(e)
 
 def generate_csv(img_dir, csv_dir):
     file_list= [name for name in os.listdir(img_dir) if 
@@ -104,7 +125,8 @@ def demo(args):
     model.to(device)
     
     print('loading ImageJ, please wait')
-    ij = imagej.init('fiji/Fiji.app/')
+    # ij = imagej.init('fiji/Fiji.app')
+    ij = imagej.init('sc.fiji:fiji:2.1.1')
     
     # use for SHG
     TASK = args.input_folder
@@ -138,7 +160,7 @@ def demo(args):
         canvas_1 = int(window_shape[1] * shape_1_factor)
         pad_0 = canvas_0 - img.shape[0]
         pad_1 = canvas_1 - img.shape[1]
-        canvas = pad(img, ((0, pad_0), (0, pad_1), (0, 0)), mode='reflect')
+        canvas = np.pad(img, ((0, pad_0), (0, pad_1), (0, 0)), mode='reflect')
         windows = view_as_windows(canvas, window_shape, step_size)
         with open(OUTPUT_PATCH_DIR+'TileConfiguration.txt', 'w') as text_file:
             print('dim = {}'.format(2), file=text_file)
@@ -184,6 +206,7 @@ def demo(args):
         c1 = exposure.rescale_intensity(c1, in_range=(0, 255), out_range=(0, 1))
         print(str(k+1)+"/" + str(len(files)) + " output saved as: " + output_name)
         io.imsave(output_name, img_as_ubyte(c1))
+        convert_to_jpeg(fn)
         if args.pilot:
             break
 

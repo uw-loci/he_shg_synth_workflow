@@ -39,7 +39,7 @@ python main.py --pilot=0
 Installation option 2:
 first to install a PyImageJ environment with all packages satisfied
 conda install mamba -n base -c conda-forge
-mamba create -n pyimagej -c conda-forge pyimagej openjdk=8
+mamba create -n pyimagej -c conda-forge pyimagej openjdk=11
 conda activate pyimagej
 Then, inside this environment, install dependencies for [PyTorch](https://pytorch.org/) and a bunch of other image processing packages such as sciki-image.
 
