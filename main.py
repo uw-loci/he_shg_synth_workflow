@@ -1,6 +1,7 @@
 from skimage import io, img_as_ubyte, morphology, img_as_bool, img_as_float, exposure, color
 from skimage.util.shape import view_as_windows
-from skimage.util import crop, pad
+from skimage.util import crop
+from numpy import pad
 from skimage.transform import resize, rescale
 from PIL import Image
 import imagej
@@ -18,7 +19,7 @@ warnings.simplefilter("ignore", UserWarning)
 
 
 from torch.utils.data import Dataset, DataLoader
-from torchvision import utils
+# from torchvision import utils
 import torch.functional as F
 import torch
 
@@ -104,7 +105,7 @@ def demo(args):
     model.to(device)
     
     print('loading ImageJ, please wait')
-    ij = imagej.init('fiji/Fiji.app/')
+    ij = imagej.init('sc.fiji:fiji:2.1.1')
     
     # use for SHG
     TASK = args.input_folder
